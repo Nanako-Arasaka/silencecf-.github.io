@@ -3,317 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>稳界学堂 - 稳定币合规教培游戏网站</title>
-    <style>
-        /* 基础样式重置 */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-        }
-
-        body {
-            background-color: #f8fafc;
-            color: #1e293b;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        /* 导航栏 */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 50px;
-            background-color: #ffffff;
-            border-bottom: 1px solid #e2e8f0;
-        }
-
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: #0f172a;
-        }
-
-        .nav-slogan {
-            font-size: 14px;
-            color: #64748b;
-        }
-
-        .nav-slogan span {
-            color: #3b82f6;
-            margin-right: 5px;
-        }
-
-        /* 主视觉区 */
-        .hero {
-            text-align: center;
-            padding: 80px 20px 40px;
-        }
-
-        .hero h1 {
-            font-size: 36px;
-            color: #0f172a;
-            margin-bottom: 30px;
-        }
-
-        .hero p {
-            max-width: 800px;
-            margin: 0 auto;
-            color: #475569;
-            line-height: 1.8;
-            font-size: 16px;
-            padding: 30px;
-            background-color: #ffffff;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-        }
-
-        /* 卡片展示区 */
-        .cards-container {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            padding: 40px 20px 80px;
-            flex-wrap: wrap;
-        }
-
-        .card {
-            background-color: #ffffff;
-            width: 300px;
-            padding: 40px 20px;
-            border-radius: 16px;
-            text-align: center;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
-            cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 1px solid #f1f5f9;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-        }
-
-        .card-icon {
-            width: 60px;
-            height: 60px;
-            background-color: #eff6ff;
-            border-radius: 50%;
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-
-        .card h3 {
-            font-size: 20px;
-            color: #0f172a;
-            margin-bottom: 15px;
-        }
-
-        .card p {
-            font-size: 14px;
-            color: #64748b;
-            line-height: 1.6;
-        }
-
-        /* 页脚区 */
-        footer {
-            margin-top: auto;
-            background-color: #0f172a;
-            color: #94a3b8;
-            text-align: center;
-            padding: 30px 20px;
-        }
-
-        .warning-box {
-            background-color: rgba(245, 158, 11, 0.1);
-            border: 1px solid #f59e0b;
-            color: #fcd34d;
-            max-width: 900px;
-            margin: 0 auto 20px;
-            padding: 15px;
-            border-radius: 8px;
-            font-size: 14px;
-            line-height: 1.6;
-        }
-
-        .copyright {
-            font-size: 13px;
-        }
-
-        /* 弹窗 (Modal) 样式 */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s ease;
-            z-index: 1000;
-        }
-
-        .modal-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .modal-content {
-            background-color: #ffffff;
-            width: 90%;
-            max-width: 600px;
-            border-radius: 16px;
-            padding: 40px;
-            position: relative;
-            transform: translateY(20px);
-            transition: transform 0.3s ease;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-        }
-
-        .modal-overlay.active .modal-content {
-            transform: translateY(0);
-        }
-
-        .close-btn {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            font-size: 24px;
-            color: #94a3b8;
-            cursor: pointer;
-            background: none;
-            border: none;
-        }
-
-        .close-btn:hover {
-            color: #0f172a;
-        }
-
-        .modal-title {
-            font-size: 24px;
-            color: #0f172a;
-            margin-bottom: 25px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .modal-list {
-            list-style: none;
-        }
-
-        .modal-list li {
-            margin-bottom: 20px;
-            line-height: 1.6;
-            color: #475569;
-            background: #f8fafc;
-            padding: 15px 20px;
-            border-radius: 8px;
-            border-left: 4px solid #3b82f6;
-        }
-
-        .modal-list li strong {
-            color: #0f172a;
-            display: block;
-            margin-bottom: 5px;
-            font-size: 16px;
-        }
-
-    </style>
+    <title>稳界学堂 | 理想拥抱数字未来</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="bg-decoration"></div>
 
     <header>
-        <div class="logo">稳界学堂</div>
-        <div class="nav-slogan"><span>■</span> 合规 · 认知 · 未来</div>
+        <div class="container nav-wrapper">
+            <div class="logo">稳界<span>学堂</span></div>
+            <nav>
+                <span class="status-tag">● 合规 · 认知 · 未来</span>
+            </nav>
+        </div>
     </header>
 
-    <section class="hero">
-        <h1>稳界学堂 | 理性拥抱数字未来</h1>
-        <p>“我们是一个专注于国内大学生的教育项目，旨在安全、合规的框架下，通过系统课程与模拟实践，帮你穿透炒作迷雾，理解稳定币的技术本质、全球监管与真实应用，构建面向未来的金融素养。”</p>
-    </section>
+    <main class="container">
+        <section class="hero">
+            <h1>理性拥抱数字未来</h1>
+            <p class="description">
+                我们是一个专注于国内大学生的教育项目，旨在安全、合规的框架下，通过系统课程与模拟实践，帮你穿透炒作迷雾，理解稳定币的技术本质。
+            </p>
+        </section>
 
-    <section class="cards-container">
-        
-        <div class="card" id="riskLabCard">
-            <div class="card-icon">🎮</div>
-            <h3>风险认知实验室</h3>
-            <p>零成本模拟稳定币操作，直观体验机制与风险</p>
-        </div>
+        <section class="grid">
+            <div class="glass-card" id="btn-risk">
+                <div class="icon-box">🎮</div>
+                <h3>风险认知实验室</h3>
+                <p>零成本模拟操作，直观体验机制与风险。</p>
+                <span class="learn-more">立即进入 →</span>
+            </div>
 
-        <div class="card">
-            <div class="card-icon">💡</div>
-            <h3>合规前沿启示录</h3>
-            <p>体系化课程，从原理到监管，从职场到趋势</p>
-        </div>
-
-    </section>
+            <div class="glass-card">
+                <div class="icon-box">💡</div>
+                <h3>合规前沿启示录</h3>
+                <p>体系化课程，从原理到监管，从职场到趋势。</p>
+                <span class="learn-more">查看详情 →</span>
+            </div>
+        </section>
+    </main>
 
     <footer>
-        <div class="warning-box">
-            ⚠️ <strong>免责声明：</strong>本网站纯属教育目的。任何提及的加密资产相关活动，在中华人民共和国境内均属非法金融活动。我们坚决反对并警示所有用户远离任何形式的非法交易与投资行为。
-        </div>
-        <div class="copyright">
-            © 2025 稳界学堂 - 大学生合规投教公益项目 | 面向理性思辨与数字素养
+        <div class="container">
+            <div class="disclaimer">
+                <strong>⚠️ 免责声明：</strong> 本网站纯属教育目的。在中华人民共和国境内，虚拟货币相关业务活动属于非法金融活动。请广大用户树立正确投资理念，自觉抵制非法金融行为。
+            </div>
+            <p class="copyright">© 2026 稳界学堂 | 基于区块链素养教育</p>
         </div>
     </footer>
 
-    <div class="modal-overlay" id="modalOverlay">
+    <div class="modal-overlay" id="modal">
         <div class="modal-content">
-            <button class="close-btn" id="closeModalBtn">&times;</button>
-            <h2 class="modal-title">
-                <span style="background: #eff6ff; padding: 5px 10px; border-radius: 8px;">🎮</span> 
-                风险认知实验室
-            </h2>
-            <ul class="modal-list">
-                <li>
-                    <strong>1. 模拟资产发放</strong>
-                    新用户注册即获得十万元模拟本金，可自由兑换市场上各种稳定币。
-                </li>
-                <li>
-                    <strong>2. 模拟交易</strong>
-                    模拟市场中各类物品价格、交易规则与现实世界相当，所有交易数据均基于现实数据。
-                </li>
-                <li>
-                    <strong>3. 教育模块</strong>
-                    以新手指引的方式引导用户进行交易，并设置各种讲解视频，作为游戏攻略引导用户。
-                </li>
-            </ul>
+            <button class="close-btn">&times;</button>
+            <div class="modal-header">
+                <span class="modal-icon">🎮</span>
+                <h2>风险认知实验室</h2>
+            </div>
+            <div class="modal-body">
+                <div class="feature-item">
+                    <span class="num">01</span>
+                    <div>
+                        <h4>模拟资产发放</h4>
+                        <p>新用户注册即获得 <strong>100,000</strong> 模拟本金，支持多种主流稳定币兑换测试。</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <span class="num">02</span>
+                    <div>
+                        <h4>真实数据模拟</h4>
+                        <p>交易规则与价格波动均锚定现实市场，让你在无风险环境下感知市场脉搏。</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <span class="num">03</span>
+                    <div>
+                        <h4>交互式教育</h4>
+                        <p>内置新手指引与专家讲解视频，边玩边学，掌握核心合规知识。</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
-    <script>
-        // 获取DOM元素
-        const riskLabCard = document.getElementById('riskLabCard');
-        const modalOverlay = document.getElementById('modalOverlay');
-        const closeModalBtn = document.getElementById('closeModalBtn');
-
-        // 点击卡片打开弹窗
-        riskLabCard.addEventListener('click', () => {
-            modalOverlay.classList.add('active');
-        });
-
-        // 点击关闭按钮关闭弹窗
-        closeModalBtn.addEventListener('click', () => {
-            modalOverlay.classList.remove('active');
-        });
-
-        // 点击弹窗外部背景也能关闭弹窗
-        modalOverlay.addEventListener('click', (e) => {
-            if (e.target === modalOverlay) {
-                modalOverlay.classList.remove('active');
-            }
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
