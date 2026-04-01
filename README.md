@@ -1,6 +1,3 @@
-# silencecf-.github.io
-Development and practice of stable coin compliance teaching game website
-
 # 稳界学堂 (StableCoin Academy) 
 > **大学生稳定币合规素养教育与风险认知实训平台**
 
