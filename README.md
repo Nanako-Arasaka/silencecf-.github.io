@@ -1,5 +1,6 @@
 # 稳界学堂 (StableCoin Academy)
 ### 大学生稳定币合规素养教育与风险认知实训平台
+### 观看最终效果请直接[点击访问](https://nanako-arasaka.github.io/Stable-Academic-Coin/)
 
 [span_1](start_span)本项目专为高校学生设计，旨在安全、合规的框架下，通过模拟实践帮助用户穿透市场迷雾，建立理性的金融认知[span_1](end_span)。
 
